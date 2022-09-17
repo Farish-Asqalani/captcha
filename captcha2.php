@@ -45,7 +45,7 @@ $color_text = imagecolorallocate($image, 0, 0, 0);
 imagefilledrectangle($image, 0, 0, 200, 38, $background_color);
 
 // variable yang berisikan font yang akan kita gunakan untuk captcha 
-$font = "FiraCode-Bold.ttf";
+$font = dirname(__FILE__).  "/FiraCode-Bold.ttf";
 
 
 // berisi segala keperluan untuk teks, mulai dari warna text, besar font, kemiringan tulisan, padding kiri kanan,. padding atas bawah, jenis font, dan captcha yg sudah di generate

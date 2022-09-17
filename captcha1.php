@@ -30,38 +30,69 @@
 // imagepng($gambar);
 // imagedestroy($gambar);
 
+// session_start();
+
+// $random = "";
+
+// for($i = 1; $i < 5; $i++){
+//     $random .= chr(rand(65, 90));
+// }
+
+// $random_padding = "";
+
+// for($j = 1; $j < 3; $j++){
+//     $random_padding .= chr(rand(49, 57));
+// }
+
+// $captcha_code = substr($random, 0, 4);
+
+// $_SESSION["captcha_code"] = $captcha_code;
+
+// header("Content-Type: image/png");
+
+// $image = imagecreatetruecolor(200, 30);
+// $background_color = imagecolorallocate($image, 255, 255, 255);
+
+// $color_text = imagecolorallocate($image, 0, 0, 0);
+
+// imagefilledrectangle($image, 0, 0, 200, 38, $background_color);
+
+// $font = "FiraCode-Bold.ttf";
+
+// imagettftext($image, 21, 20, $random_padding, 38, $color_text, $font, $captcha_code);
+
+// imagefilter($image, IMG_FILTER_PIXELATE, 2);
+
+// imagepng($image);
+// imagedestroy($image);
+
 session_start();
+
 
 $random = "";
 
-for($i = 1; $i < 5; $i++){
+for($i = 0; $i < 5; $i++){
     $random .= chr(rand(65, 90));
-}
-
-$random_padding = "";
-
-for($j = 1; $j < 3; $j++){
-    $random_padding .= chr(rand(49, 57));
 }
 
 $captcha_code = substr($random, 0, 4);
 
 $_SESSION["captcha_code"] = $captcha_code;
 
+// membuat gambar
 header("Content-Type: image/png");
 
-$image = imagecreatetruecolor(200, 30);
+// mewarnai gambar
+$image = imagecreatetruecolor(200, 38);
 $background_color = imagecolorallocate($image, 255, 255, 255);
-
 $color_text = imagecolorallocate($image, 0, 0, 0);
 
 imagefilledrectangle($image, 0, 0, 200, 38, $background_color);
 
-$font = "FiraCode-Bold.ttf";
+// font
+$font = dirname(__FILE__) . '/Hack-Bold.ttf';
 
-imagettftext($image, 21, 20, $random_padding, 38, $color_text, $font, $captcha_code);
-
-imagefilter($image, IMG_FILTER_PIXELATE, 2);
+imagettftext($image, 20, 5, 50, 38, $color_text, $font, $captcha_code);
 
 imagepng($image);
 imagedestroy($image);
